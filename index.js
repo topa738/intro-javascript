@@ -1,3 +1,8 @@
-let nombre="Facundo Topa"
+let ciudad="General Pinto"
 let numero=3*Math.random()
-console.log("numero random",numero,"Nombre",nombre)
+const nombre = "Facundo"
+const apellido = "Topa"
+const nombrecompleto=`${nombre} ${apellido}`
+
+console.log("numero random",numero,"Nombre de ciudad",ciudad)
+console.log("Nombre completo",nombrecompleto)
