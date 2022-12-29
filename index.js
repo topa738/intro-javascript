@@ -1,39 +1,22 @@
-let nombre="Facundo Topa"
-let numero=3*Math.random()
-console.log("numero random",numero,"Nombre",nombre)
+import heroes from "./heroes.js";
 
 
-const celular= {
-    key: '0203'
-    ,
-    marca:'samsung'
-        ,
-    color:'uzul',
-        precio:'9000',
-    anio_creacion:'2020'
+const getHeroeById = (id) => {
+    return new Promise((resolve,reject)=>{
 
-}
-console.log(celular)
-console.log(celular.key)
-celular.key=true
-celular.anio_creacion=2017
-console.log(delete celular.marca);
-console.log(Object.keys(celular));
+        resolve(heroes.find( (heroe) => heroe.id === id ));
 
-const arreglo=[1,2,3,4]
+    })
+};
 
-let arreglo2=arreglo
-arreglo2.push(5)
-console.log(arreglo2)
-const arreglo3 = arreglo2.map(x => x * 5);
+getHeroeById(10).then(res=>{
+    console.log(res);
+}),error=> console.log(error);
 
-const person = {
-    name: 'Pepe',
-    age: 26,
-    hobbies: ['chess', 'running', 'basket']
-}
-const nombre=person.name
-const edad = person.age
-const hobbies= person.hobbies
-
-console.log(person)
+//
+fetch('https://api.github.com/users/manishmshiva')
+    .then(response => response.text())
+    .then(data => {
+        /** Procesar los datos **/
+        console.log(data)
+    }).catch(error=> console.error(error))
