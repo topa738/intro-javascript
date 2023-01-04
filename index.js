@@ -1,21 +1,25 @@
 import heroes from "./heroes.js";
 
 
-const getHeroeById = (id) => {
+const getHeroeByIdAsync = (id) => {
     return new Promise((resolve,reject)=>{
-
-        resolve(heroes.find( (heroe) => heroe.id === id ));
-
+        const pi=heroes.find( (heroe) => heroe.id === id)
+        if ( pi ) {
+            resolve( pi );
+        } else {
+            reject( 'No se pudo encontrar el héroe' );
+        }
     })
 };
 
-getHeroeById(10).then(res=>{
+getHeroeByIdAsync(10).then(res=>{
     console.log(res);
-}),error=> console.log(error);
+}).catch(error=> console.error(error))
 
-//
+//l
+
 fetch('https://api.github.com/users/manishmshiva')
-    .then(response => response.text())
+    .then(response => response.json())
     .then(data => {
         /** Procesar los datos **/
         console.log(data)
